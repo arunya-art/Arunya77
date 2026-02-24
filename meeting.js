@@ -126,9 +126,9 @@ router.post('/', [
     res.json({ message: 'Booking confirmed! Check your email.' });
 
   } catch (err) {
-    console.error('❌ Meeting email error:', err.message, err.stack);
-    res.status(500).json({ message: 'Email sending failed. Please contact us directly at satnamsinghama@gmail.com' });
-  }
+  console.error("FULL MEETING ERROR:", err);
+  res.status(500).json({ message: "Meeting booking failed" });
+}
 });
 
 module.exports = router;
