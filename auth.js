@@ -103,8 +103,8 @@ router.get('/me', async (req, res) => {
     res.status(401).json({ message: 'Token invalid or expired' });
   }
 });
-  const express = require('express');
-const router = express.Router();
+ 
+
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const User = require('./User');
