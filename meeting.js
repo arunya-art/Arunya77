@@ -128,6 +128,6 @@ try {
 } catch (err) {
   console.error('❌ Meeting email error:', err.response?.data || err.message);
   res.status(500).json({ message: 'Email sending failed.' });
-}
-
+} 
+}); 
 module.exports = router;
