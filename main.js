@@ -196,6 +196,8 @@ if (recordedFormEl) {
 }
 
 // Login form
+
+
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   // ── Auto-redirect if already logged in ──
@@ -254,6 +256,7 @@ if (loginForm) {
 }
 
 // Signup form
+
 const signupForm = document.getElementById('signupForm');
 if (signupForm) {
   signupForm.addEventListener('submit', async (e) => {
@@ -469,3 +472,18 @@ function logoutUser() {
     }
   }
 })();
+// ===== AUTH FORMS =====
+
+// LOGIN
+submitForm(
+  'loginForm',
+  '/api/auth/login',
+  'Login successful! Redirecting...'
+);
+
+// SIGNUP
+submitForm(
+  'signupForm',
+  '/api/auth/signup',
+  'Account created successfully!'
+);
