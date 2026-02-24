@@ -104,11 +104,6 @@ router.get('/me', async (req, res) => {
   }
 });
  
-
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
-const User = require('./User');
-
 // ===== SIGNUP =====
 router.post('/signup',
   [
