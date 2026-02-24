@@ -7,11 +7,13 @@ const OWNER = process.env.OWNER_EMAIL || 'satnamsinghama@gmail.com';
 
 function getTransporter() {
   return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST || 'smtp-relay.brevo.com',
-    port: parseInt(process.env.EMAIL_PORT) || 587,
+    host: "smtp-relay.brevo.com",
+    port: 587,
     secure: false,
-    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-    tls: { rejectUnauthorized: false }
+    auth: { 
+      user: process.env.EMAIL_USER, 
+      pass: process.env.EMAIL_PASS 
+    }
   });
 }
 
