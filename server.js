@@ -34,8 +34,8 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'FLYNQN A
 // Catch-all → index.html
 app.get('*', (req, res) => {
   if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-  }
+   return res.sendFile(path.join(__dirname, 'index.html'));
+  }   return res.status(404).json({ message: 'API route not found' });
 });
 
 app.use((err, req, res, next) => {
