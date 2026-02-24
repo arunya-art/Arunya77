@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Dashboard – FLYNQN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .dashboard { display: flex; min-height: 100vh; }
+    .sidebar { width: 260px; background: #0e0e10; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; padding: 1.5rem 0; position: fixed; top: 0; bottom: 0; left: 0; overflow-y: auto; z-index: 100; }
+    .sidebar-logo { padding: 0 1.5rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 1rem; font-family: var(--font); font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; }
+    .sidebar-logo a { color: #fff; text-decoration: none; }
+    .sidebar-nav { list-style: none; flex: 1; }
+    .sidebar-nav li a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; color: rgba(255,255,255,0.45); text-decoration: none; font-family: var(--font); font-size: 0.9rem; font-weight: 500; transition: all 0.2s; border-left: 3px solid transparent; }
+    .sidebar-nav li a:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.04); }
+    .sidebar-nav li a.active { color: #CC5500; background: rgba(204,85,0,0.08); border-left-color: #CC5500; }
+    .sidebar-user { padding: 1.25rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); margin-top: auto; display: flex; align-items: center; gap: 0.75rem; }
+    .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #CC5500; display: flex; align-items: center; justify-content: center; font-family: var(--font); font-weight: 800; font-size: 0.9rem; color: #fff; flex-shrink: 0; }
+    .user-name { font-family: var(--font); font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .user-role { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.15rem; text-transform: capitalize; }
+    .dash-main { margin-left: 260px; flex: 1; padding: 2.5rem; background: var(--charcoal); min-height: 100vh; }
+    .dash-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+    .dash-topbar h1 { font-size: 1.75rem; font-family: var(--font); color: #fff; letter-spacing: -0.5px; }
+    .dash-topbar p { color: rgba(255,255,255,0.4); font-size: 0.88rem; margin-top: 0.2rem; }
+    .dash-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+    .dash-card { background: #18181c; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.5rem; }
+    .dash-card-label { font-family: var(--font); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.85rem; }
+    .dash-card-num { font-family: var(--font); font-size: 2.2rem; font-weight: 900; color: #CC5500; line-height: 1; }
+    .dash-card-sub { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 0.4rem; }
+    .dash-section { background: #18181c; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.75rem; margin-bottom: 1.5rem; }
+    .dash-section h3 { font-family: var(--font); font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 1.25rem; }
+    .action-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+      .sidebar.open { transform: translateX(0); }
+      .dash-main { margin-left: 0; }
+      .dash-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) { .dash-cards { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">FLYNQN<span style="color:#CC5500">.</span></a>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html" class="active">🏠 Dashboard</a></li>
+      <li><a href="index.html#innovations">🚀 Innovations</a></li>
+      <li><a href="index.html" onclick="openModal('tax')">📑 Book Tax Session</a></li>
+      <li><a href="index.html" onclick="openModal('postpartum')">💜 Book Health Session</a></li>
+      <li><a href="room-automation.html">🏠 Room Automation</a></li>
+      <li><a href="help-center.html">❓ Help Center</a></li>
+      <li><a href="index.html#contact">📧 Contact</a></li>
+      <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+    </ul>
+    <div class="sidebar-user">
+      <div class="user-avatar" id="userAvatar">?</div>
+      <div>
+        <div class="user-name" id="userName">Loading...</div>
+        <div class="user-role" id="userRole">client</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div>
+        <h1 id="greeting">Welcome back 👋</h1>
+        <p id="subGreeting">Here's what's happening with your FLYNQN account.</p>
+      </div>
+      <button onclick="logout()" style="background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);padding:0.5rem 1.1rem;border-radius:50px;cursor:pointer;font-family:var(--font);font-size:0.85rem;transition:all 0.2s" onmouseover="this.style.color='#CC5500';this.style.borderColor='rgba(204,85,0,0.4)'" onmouseout="this.style.color='rgba(255,255,255,0.4)';this.style.borderColor='rgba(255,255,255,0.1)'">Logout</button>
+    </div>
+
+    <div class="dash-cards">
+      <div class="dash-card"><div class="dash-card-label">Account Status</div><div class="dash-card-num" style="font-size:1.1rem;color:#22c55e">✓ Active</div><div class="dash-card-sub">Account verified</div></div>
+      <div class="dash-card"><div class="dash-card-label">Tax Sessions</div><div class="dash-card-num">0</div><div class="dash-card-sub">Consultations booked</div></div>
+      <div class="dash-card"><div class="dash-card-label">Health Sessions</div><div class="dash-card-num">0</div><div class="dash-card-sub">Sessions attended</div></div>
+      <div class="dash-card"><div class="dash-card-label">Automation</div><div class="dash-card-num">—</div><div class="dash-card-sub">No kit ordered yet</div></div>
+    </div>
+
+    <div class="dash-section">
+      <h3>Quick Actions</h3>
+      <div class="action-btns">
+        <a href="index.html#innovations" class="btn-orange">Book Tax Consultation →</a>
+        <a href="index.html#innovations" class="btn-orange">Book Health Session →</a>
+        <a href="room-automation.html" class="btn-outline-white">Room Automation</a>
+        <a href="help-center.html" class="btn-outline-white">Help Center</a>
+      </div>
+    </div>
+
+    <div class="dash-section">
+      <h3>Your FLYNQN Services</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem">
+        <div style="background:rgba(204,85,0,0.06);border:1px solid rgba(204,85,0,0.12);border-radius:12px;padding:1.25rem">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem">📑</div>
+          <div style="font-family:var(--font);font-weight:700;color:#fff;font-size:0.95rem;margin-bottom:0.3rem">Nomadic Tax Consultancy</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1rem">Expert cross-border tax advice for global professionals</div>
+          <a href="index.html#innovations" class="btn-orange" style="font-size:0.82rem;padding:0.5rem 1.1rem">Book Session</a>
+        </div>
+        <div style="background:rgba(204,85,0,0.06);border:1px solid rgba(204,85,0,0.12);border-radius:12px;padding:1.25rem">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem">💜</div>
+          <div style="font-family:var(--font);font-weight:700;color:#fff;font-size:0.95rem;margin-bottom:0.3rem">Postpartum Support</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1rem">Live & recorded sessions with certified doctors</div>
+          <a href="index.html#innovations" class="btn-orange" style="font-size:0.82rem;padding:0.5rem 1.1rem">Book Session</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="main.js"></script>
+<script>
+  // ── AUTH CHECK ──────────────────────────────────────────────
+  const token = localStorage.getItem('flynqn-token');
+  const savedUser = localStorage.getItem('flynqn-user');
+
+  if (!token) {
+    window.location.href = '/login.html';
+  }
+
+  // Handle Google OAuth redirect token
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlToken = urlParams.get('token');
+  if (urlToken) {
+    localStorage.setItem('flynqn-token', urlToken);
+    window.history.replaceState({}, '', '/dashboard.html');
+  }
+
+  // Load user from localStorage first (instant, no network)
+  function loadUserFromStorage() {
+    try {
+      const user = JSON.parse(savedUser);
+      if (user) {
+        const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
+        document.getElementById('userAvatar').textContent = initials;
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userRole').textContent = user.role || 'client';
+        const hour = new Date().getHours();
+        const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+        document.getElementById('greeting').textContent = greeting + ', ' + user.name.split(' ')[0] + ' 👋';
+        document.getElementById('subGreeting').textContent = 'Here\'s your FLYNQN account overview.';
+      }
+    } catch(e) {}
+  }
+
+  loadUserFromStorage();
+
+  // Then verify token with server in background
+  fetch('/api/auth/me', {
+    headers: { 'Authorization': 'Bearer ' + (token || urlToken) }
+  }).then(r => r.json()).then(data => {
+    if (data.user) {
+      localStorage.setItem('flynqn-user', JSON.stringify(data.user));
+      loadUserFromStorage();
+    }
+  }).catch(() => {}); // Silent fail - localStorage data still works
+
+  function logout() {
+    localStorage.removeItem('flynqn-token');
+    localStorage.removeItem('flynqn-user');
+    window.location.href = '/login.html';
+  }
+</script>
+</body>
+</html>

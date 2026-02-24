@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rural Room Automation – FLYNQN</title>
+  <meta name="description" content="FLYNQN's smart home automation kit for rural households. Under ₹900 per room."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── Page-specific extras ── */
+    .auto-hero { padding: 8rem 0 5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .auto-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 20% 50%, rgba(10,31,68,0.55) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 80% 20%, rgba(204,85,0,0.08) 0%, transparent 60%), var(--charcoal); }
+    .auto-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+    .auto-hero-text .section-label { display: block; margin-bottom: 1rem; }
+    .auto-hero-text h1 { font-size: clamp(2.5rem,5vw,4rem); letter-spacing: -2px; margin-bottom: 1.25rem; }
+    .auto-hero-text p { font-size: 1.1rem; max-width: 480px; margin-bottom: 2rem; }
+    .auto-price-pill { display: inline-flex; align-items: center; gap: 0.75rem; background: rgba(204,85,0,0.1); border: 1px solid rgba(204,85,0,0.25); border-radius: 50px; padding: 0.65rem 1.5rem; margin-bottom: 2rem; }
+    .auto-price-pill span { font-family: var(--font); font-size: 1.5rem; font-weight: 900; color: var(--orange); }
+    .auto-price-pill p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+    .auto-hero-visual { position: relative; }
+    .auto-device-card { background: var(--charcoal2); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; }
+    .auto-device-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(204,85,0,0.15) 0%, transparent 70%); pointer-events: none; }
+    .device-icon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .device-feature { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: center; transition: var(--transition); }
+    .device-feature:hover { border-color: rgba(204,85,0,0.3); }
+    .device-feature span { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .device-feature p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+    .device-status { display: flex; align-items: center; justify-content: space-between; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15); border-radius: 10px; padding: 0.85rem 1.25rem; }
+    .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+    .status-text { font-family: var(--font); font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .status-rooms { font-family: var(--font); font-size: 0.82rem; color: var(--muted); }
+
+    /* How it works */
+    .how-section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(to right, transparent, rgba(204,85,0,0.3), transparent); pointer-events: none; }
+    .step-card { text-align: center; position: relative; }
+    .step-num { width: 56px; height: 56px; background: rgba(204,85,0,0.1); border: 1px solid rgba(204,85,0,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font); font-weight: 900; font-size: 1.1rem; color: var(--orange); margin: 0 auto 1.25rem; }
+    .step-card h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--white); }
+    .step-card p { font-size: 0.88rem; }
+
+    /* Specs section */
+    .specs-section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+    .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .spec-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 0.95rem 0; border-bottom: 1px solid var(--border); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); font-size: 0.9rem; }
+    .spec-val { font-family: var(--font); font-weight: 700; font-size: 0.9rem; color: var(--white); text-align: right; }
+    .spec-val.orange { color: var(--orange); }
+    .inclusions { background: var(--charcoal2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+    .inclusions h3 { font-size: 1.1rem; margin-bottom: 1.25rem; }
+    .inclusion-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .check-circle { width: 22px; height: 22px; background: rgba(204,85,0,0.15); border: 1px solid rgba(204,85,0,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .inclusion-item p { font-size: 0.9rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.5; }
+
+    /* Contact form section */
+    .auto-contact-section { padding: 6rem 0 8rem; }
+    .auto-contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .auto-contact-info h2 { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 1rem; }
+    .auto-contact-info p { margin-bottom: 2rem; }
+    .trust-badges { display: flex; flex-direction: column; gap: 0.85rem; }
+    .trust-badge { display: flex; align-items: center; gap: 0.85rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1.1rem; }
+    .trust-badge span { font-size: 1.4rem; flex-shrink: 0; }
+    .trust-badge div { }
+    .trust-badge strong { display: block; font-family: var(--font); font-size: 0.9rem; color: var(--white); }
+    .trust-badge p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .auto-form-card { background: var(--charcoal2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; }
+    .auto-form-card h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+
+    @media (max-width: 900px) {
+      .auto-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid::before { display: none; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .auto-contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .device-icon-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#innovations">Innovations</a></li>
+      <li><a href="index.html#impact">Impact</a></li>
+      <li><a href="help-center.html">Help Center</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost-sm">Login</a>
+      <a href="#inquire" class="btn-orange">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="auto-hero">
+  <div class="auto-hero-bg"></div>
+  <div class="container">
+    <div class="auto-hero-inner">
+      <div class="auto-hero-text fade-up">
+        <a href="index.html#innovations" class="back-link" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.4);font-size:0.85rem;text-decoration:none;margin-bottom:1.5rem;font-family:var(--font);transition:var(--transition)">← Back to Innovations</a>
+        <span class="section-label">IoT · Hardware · Rural Tech</span>
+        <h1>Smart homes for<br/><span class="orange">every household.</span></h1>
+        <div class="auto-price-pill">
+          <span>Under ₹900</span>
+          <p>per room — fully installed</p>
+        </div>
+        <p>FLYNQN's Rural Room Automation kit brings intelligent lighting, climate control, and security to any household — at a price point built for rural India and similar markets.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#inquire" class="btn-orange large">Request Installation →</a>
+          <a href="#how-it-works" class="btn-outline-white large">See How It Works</a>
+        </div>
+      </div>
+      <div class="auto-hero-visual fade-up delay-1">
+        <div class="auto-device-card">
+          <div style="font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Live Room Dashboard</div>
+          <div class="device-icon-grid">
+            <div class="device-feature"><span>💡</span><p>Smart Lights<br/>Active</p></div>
+            <div class="device-feature"><span>🌡️</span><p>Climate<br/>22°C</p></div>
+            <div class="device-feature"><span>🔒</span><p>Security<br/>Armed</p></div>
+            <div class="device-feature"><span>📱</span><p>App<br/>Connected</p></div>
+          </div>
+          <div class="device-status">
+            <div style="display:flex;align-items:center;gap:0.6rem;">
+              <div class="status-dot"></div>
+              <span class="status-text">All systems active</span>
+            </div>
+            <span class="status-rooms">3 rooms connected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Process</span>
+      <h2>Up and running in<br/><span class="orange">4 simple steps.</span></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-num">1</div>
+        <h4>Submit Inquiry</h4>
+        <p>Fill in the form below with your location and number of rooms.</p>
+      </div>
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">2</div>
+        <h4>Site Assessment</h4>
+        <p>A FLYNQN technician visits your home for a free assessment.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">3</div>
+        <h4>Installation</h4>
+        <p>Full kit installed in 2–3 days. Wiring, setup, and app activation.</p>
+      </div>
+      <div class="step-card fade-up delay-3">
+        <div class="step-num">4</div>
+        <h4>Live & Supported</h4>
+        <p>1-year warranty, free tech support, and app updates included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS & INCLUSIONS -->
+<section class="specs-section">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom:3rem;">
+      <span class="section-label">Product Details</span>
+      <h2>Everything you need<br/><span class="orange">included.</span></h2>
+    </div>
+    <div class="specs-grid">
+      <div class="fade-up">
+        <h3 style="font-size:1.1rem;margin-bottom:1.5rem;color:var(--white);">Technical Specifications</h3>
+        <ul class="spec-list">
+          <tr class="spec-row"><td class="spec-label">Price per Room</td><td class="spec-val orange">Under ₹900</td></tr>
+          <tr class="spec-row"><td class="spec-label">Connectivity</td><td class="spec-val">Wi-Fi 2.4GHz / Bluetooth</td></tr>
+          <tr class="spec-row"><td class="spec-label">Power</td><td class="spec-label">220V AC + Solar Compatible</td></tr>
+          <tr class="spec-row"><td class="spec-label">App Platforms</td><td class="spec-val">Android & iOS</td></tr>
+          <tr class="spec-row"><td class="spec-label">Voice Control</td><td class="spec-val">Alexa & Google Home</td></tr>
+          <tr class="spec-row"><td class="spec-label">Network Requirement</td><td class="spec-val">1 Mbps minimum</td></tr>
+          <tr class="spec-row"><td class="spec-label">Installation Time</td><td class="spec-val">2–3 days</td></tr>
+          <tr class="spec-row"><td class="spec-label">Warranty</td><td class="spec-val orange">1 Year</td></tr>
+        </ul>
+      </div>
+      <div class="inclusions fade-up delay-1">
+        <h3>What's Included in Every Room Kit</h3>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>Smart Switch Panel</strong> — controls all lights and fans from one place or via app</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>Motion Sensor</strong> — automatic lights on entry, security alert on unknown motion</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>Temperature Monitor</strong> — real-time room temperature visible in app</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>Wi-Fi Smart Plug</strong> — turn any device on/off remotely or on a schedule</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>FLYNQN Home App Access</strong> — Android + iOS, lifetime free</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>Professional Installation</strong> — certified FLYNQN technician, all wiring included</p></div>
+        <div class="inclusion-item"><div class="check-circle">✓</div><p><strong>1-Year Warranty + Free Tech Support</strong> — phone and remote support included</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / INQUIRY FORM -->
+<section class="auto-contact-section" id="inquire">
+  <div class="container">
+    <div class="auto-contact-grid">
+      <div class="auto-contact-info fade-up">
+        <span class="section-label">Get a Quote</span>
+        <h2>Ready to automate<br/>your <span class="orange">home?</span></h2>
+        <p>Fill in the form and our team will reach out within 24 hours to schedule your free site assessment.</p>
+        <div class="trust-badges">
+          <div class="trust-badge"><span>💰</span><div><strong>Under ₹900 per room</strong><p>All-inclusive pricing, no hidden charges</p></div></div>
+          <div class="trust-badge"><span>🛠️</span><div><strong>Free installation included</strong><p>Certified technicians handle everything</p></div></div>
+          <div class="trust-badge"><span>🛡️</span><div><strong>1-year warranty</strong><p>Hardware + free tech support included</p></div></div>
+          <div class="trust-badge"><span>☀️</span><div><strong>Solar compatible</strong><p>Works with solar panels and inverters</p></div></div>
+        </div>
+      </div>
+      <div class="auto-form-card fade-up delay-1">
+        <h3>Request Free Assessment & Quote</h3>
+        <form id="automationForm">
+          <div class="mf-row">
+            <div class="mf-field"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+            <div class="mf-field"><label>Email Address</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+          </div>
+          <div class="mf-row">
+            <div class="mf-field"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+91 98765 43210" required/></div>
+            <div class="mf-field"><label>Number of Rooms</label>
+              <select name="rooms">
+                <option value="1 Room">1 Room</option>
+                <option value="2 Rooms">2 Rooms</option>
+                <option value="3 Rooms">3 Rooms</option>
+                <option value="4 Rooms">4 Rooms</option>
+                <option value="5+ Rooms">5+ Rooms</option>
+              </select>
+            </div>
+          </div>
+          <div class="mf-field"><label>State / District</label><input type="text" name="location" placeholder="e.g. Rajasthan, Jaipur" required/></div>
+          <div class="mf-field"><label>Type of Property</label>
+            <select name="property_type">
+              <option value="House">House</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Farm / Agricultural">Farm / Agricultural</option>
+              <option value="Shop / Commercial">Shop / Commercial</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="mf-field"><label>Any specific requirements? <span style="opacity:0.5">(Optional)</span></label>
+            <textarea name="message" rows="3" placeholder="e.g. solar-only power, security cameras, specific rooms..."></textarea>
+          </div>
+          <input type="hidden" name="service" value="Room Automation"/>
+          <button type="submit" class="btn-orange full-w" id="automationSubmitBtn">Send Inquiry — Free Assessment</button>
+          <p style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:0.75rem;">Our team responds within 24 hours. No spam, ever.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+        <p>Innovating and Inspiring Communities worldwide.</p>
+      </div>
+      <div class="footer-col"><h4>Innovations</h4><a href="room-automation.html">Room Automation</a><a href="index.html#innovations">Thermo Bottle</a><a href="index.html#innovations">Tax Consultancy</a><a href="index.html#innovations">Postpartum Support</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="index.html#about">About</a><a href="index.html#impact">Impact</a><a href="index.html#contact">Contact</a><a href="login.html">Login</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FLYNQN. All rights reserved. Innovating and Inspiring Communities.</p></div>
+  </div>
+</footer>
+
+<!-- Floating AI Chat -->
+<div class="ai-float-btn" id="aiFloatBtn">🤖</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-panel-header">
+    <div><div class="ai-panel-title">FLYNQN Assistant</div><div class="ai-panel-sub"><span class="online-dot"></span>Online</div></div>
+    <button class="ai-close-btn" id="aiPanelClose">✕</button>
+  </div>
+  <div class="ai-panel-messages" id="aiPanelMessages">
+    <div class="ai-msg bot"><div class="ai-bubble">👋 Hi! I can answer questions about the Room Automation kit. What would you like to know?</div></div>
+  </div>
+  <div class="ai-suggestions">
+    <button class="ai-sug" onclick="sendAI('What is included in the kit?')">What's included?</button>
+    <button class="ai-sug" onclick="sendAI('Room automation price')">Pricing</button>
+    <button class="ai-sug" onclick="sendAI('How long does installation take?')">Installation time</button>
+  </div>
+  <div class="ai-panel-input">
+    <input type="text" id="aiPanelInput" placeholder="Ask anything..."/>
+    <button id="aiPanelSend">↑</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+<script>
+// Wire automation form on this page
+const automationFormEl = document.getElementById('automationForm');
+if (automationFormEl) {
+  automationFormEl.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('automationSubmitBtn');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending inquiry...';
+    btn.disabled = true;
+    try {
+      const data = Object.fromEntries(new FormData(automationFormEl).entries());
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      if (res.ok) {
+        showToast('✅ Inquiry sent! We\'ll contact you within 24 hours.');
+        automationFormEl.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        showToast(result.message || 'Something went wrong.', 'error');
+      }
+    } catch {
+      showToast('Server error. Please try again.', 'error');
+    } finally {
+      btn.textContent = orig;
+      btn.disabled = false;
+    }
+  });
+}
+</script>
+</body>
+</html>

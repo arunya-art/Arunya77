@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FLYNQN – Innovating and Inspiring Communities</title>
+  <meta name="description" content="FLYNQN is a global umbrella innovation group — rural automation, clean energy, tax consultancy, and postpartum healthcare."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#innovations">Innovations</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost-sm">Login</a>
+      <a href="#contact" class="btn-orange">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span> Innovation. Impact. Community.
+    </div>
+    <h1 class="hero-title">
+      What will we<br/><span class="orange">transform</span><br/>next?
+    </h1>
+    <p class="hero-sub">FLYNQN is building scalable innovations that empower rural households, mobile professionals, and women's health worldwide.</p>
+    <div class="hero-btns">
+      <a href="#innovations" class="btn-orange large">Explore Our Innovations →</a>
+      <a href="#contact" class="btn-outline-white large">Partner With Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left fade-up">
+        <span class="section-label">Who We Are</span>
+        <h2>An umbrella group<br/>built to <span class="orange">transform</span><br/>communities</h2>
+      </div>
+      <div class="about-right fade-up delay-1">
+        <p>FLYNQN is a global umbrella innovation and consulting group operating at the intersection of hardware, clean energy, financial services, and digital health. We build scalable solutions for the world's most underserved communities.</p>
+        <p>Our tagline says it all — <em>"Innovating and Inspiring Communities."</em> Every product we launch serves a real person solving a real problem.</p>
+        <div class="about-stats">
+          <div class="astat"><span class="counter" data-target="120">0</span>+<p>Countries</p></div>
+          <div class="astat"><span class="counter" data-target="4800">0</span>+<p>Clients</p></div>
+          <div class="astat"><span class="counter" data-target="98">0</span>%<p>Satisfaction</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATIONS – 2x2 GRID, NO CAROUSEL -->
+<section class="innovations-section" id="innovations">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Our Portfolio</span>
+      <h2>Four innovations.<br/>One <span class="orange">unified mission.</span></h2>
+      <p>Click any innovation to learn more and connect with our team.</p>
+    </div>
+
+    <div class="innovations-grid">
+
+      <!-- Card 1: Room Automation → goes to detail page -->
+      <div class="inno-card fade-up" onclick="window.location.href='room-automation.html'">
+        <div class="inno-card-inner">
+          <div class="inno-icon-wrap">
+            <div class="inno-icon">🏠</div>
+          </div>
+          <div class="inno-tag">IoT · Hardware</div>
+          <h3>Rural Room Automation</h3>
+          <p>Smart home automation systems under ₹900 — built specifically for rural households. Lighting, climate, and security made accessible to all.</p>
+          <div class="inno-price-badge">Under ₹900</div>
+          <div class="inno-cta">View Product Details <span>→</span></div>
+        </div>
+        <div class="inno-card-glow"></div>
+      </div>
+
+      <!-- Card 2: Thermo Bottle -->
+      <div class="inno-card fade-up delay-1" onclick="openModal('bottle')">
+        <div class="inno-card-inner">
+          <div class="inno-icon-wrap">
+            <div class="inno-icon">🌡️</div>
+          </div>
+          <div class="inno-tag">CleanTech · Energy</div>
+          <h3>Thermo-Electric Bottle</h3>
+          <p>A patented bottle that converts temperature difference into usable electricity. Off-grid green energy from your everyday drink.</p>
+          <div class="inno-price-badge">Patented Tech</div>
+          <div class="inno-cta">Learn More & Inquire <span>→</span></div>
+        </div>
+        <div class="inno-card-glow"></div>
+      </div>
+
+      <!-- Card 3: Tax Consultancy -->
+      <div class="inno-card fade-up delay-2" onclick="openModal('tax')">
+        <div class="inno-card-inner">
+          <div class="inno-icon-wrap">
+            <div class="inno-icon">📑</div>
+          </div>
+          <div class="inno-tag">Finance · Legal</div>
+          <h3>Nomadic Tax Consultancy</h3>
+          <p>Expert cross-border tax advisory for digital nomads and global professionals. Book a certified consultant and get compliant.</p>
+          <div class="inno-price-badge">Book a Session</div>
+          <div class="inno-cta">Book Consultation <span>→</span></div>
+        </div>
+        <div class="inno-card-glow"></div>
+      </div>
+
+      <!-- Card 4: Postpartum -->
+      <div class="inno-card fade-up delay-3" onclick="openModal('postpartum')">
+        <div class="inno-card-inner">
+          <div class="inno-icon-wrap">
+            <div class="inno-icon">💜</div>
+          </div>
+          <div class="inno-tag">HealthTech · Women</div>
+          <h3>Postpartum Support</h3>
+          <p>Live & recorded sessions with certified doctors for new mothers and women dealing with postpartum challenges. Compassionate, professional, private.</p>
+          <div class="inno-price-badge">Live + Recorded</div>
+          <div class="inno-cta">Book a Session <span>→</span></div>
+        </div>
+        <div class="inno-card-glow"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT SECTION -->
+<section class="impact-section" id="impact">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Our Impact</span>
+      <h2>Real change.<br/><span class="orange">Real people.</span></h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card fade-up"><div class="impact-num orange"><span class="counter" data-target="12000">0</span>+</div><p>Rural homes with smart automation</p></div>
+      <div class="impact-card fade-up delay-1"><div class="impact-num orange"><span class="counter" data-target="3400">0</span>+</div><p>Mothers supported through postpartum</p></div>
+      <div class="impact-card fade-up delay-2"><div class="impact-num orange"><span class="counter" data-target="850">0</span>+</div><p>Tax cases resolved across 40+ countries</p></div>
+      <div class="impact-card fade-up delay-3"><div class="impact-num orange"><span class="counter" data-target="120">0</span>+</div><p>Countries reached by FLYNQN solutions</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Testimonials</span>
+      <h2>Trusted by <span class="orange">communities</span></h2>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track">
+        <div class="testi-card"><p>"The room automation kit transformed our home. We never thought something this affordable could be this good."</p><div class="testi-author"><div class="tav">RD</div><div><strong>Ramesh Desai</strong><span>Rural Homeowner, Rajasthan</span></div></div></div>
+        <div class="testi-card"><p>"FLYNQN's postpartum sessions with certified doctors gave me the support I desperately needed. Life-changing."</p><div class="testi-author"><div class="tav">SM</div><div><strong>Sarah Mitchell</strong><span>New Mother, UK</span></div></div></div>
+        <div class="testi-card"><p>"As a digital nomad, the tax consultancy sorted years of confusion in one session. Worth every rupee."</p><div class="testi-author"><div class="tav">AK</div><div><strong>Arjun Kapoor</strong><span>Digital Nomad, Mumbai</span></div></div></div>
+        <div class="testi-card"><p>"The thermo-electric bottle is genuinely revolutionary. Off-grid power from my tea — who imagined this?"</p><div class="testi-author"><div class="tav">LN</div><div><strong>Laura Nguyen</strong><span>Field Researcher, Vietnam</span></div></div></div>
+        <div class="testi-card"><p>"FLYNQN handled my multi-country tax filings flawlessly. The team is world-class."</p><div class="testi-author"><div class="tav">JW</div><div><strong>James Whitfield</strong><span>Entrepreneur, UAE</span></div></div></div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="testi-card"><p>"The room automation kit transformed our home. We never thought something this affordable could be this good."</p><div class="testi-author"><div class="tav">RD</div><div><strong>Ramesh Desai</strong><span>Rural Homeowner, Rajasthan</span></div></div></div>
+        <div class="testi-card"><p>"FLYNQN's postpartum sessions with certified doctors gave me the support I desperately needed. Life-changing."</p><div class="testi-author"><div class="tav">SM</div><div><strong>Sarah Mitchell</strong><span>New Mother, UK</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left fade-up">
+        <span class="section-label">Get In Touch</span>
+        <h2>Let's build<br/>something <span class="orange">together</span></h2>
+        <p>Whether you're a client, partner, or investor — we're ready to connect.</p>
+        <div class="contact-links">
+          <div class="clink">📧 hello@flynq.com</div>
+          <div class="clink">🌍 Global HQ — London, UK</div>
+          <div class="clink">📞 +1 (800) FLYNQN-01</div>
+        </div>
+      </div>
+      <form class="contact-form fade-up delay-1" id="contactForm">
+        <div class="cf-row">
+          <div class="cf-field"><label>Full Name</label><input type="text" name="name" placeholder="John Doe" required/></div>
+          <div class="cf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+        </div>
+        <div class="cf-field">
+          <label>I'm interested in</label>
+          <select name="service">
+            <option value="">Select a service</option>
+            <option>Room Automation</option>
+            <option>Thermo-Electric Bottle</option>
+            <option>Nomadic Tax Consultancy</option>
+            <option>Postpartum Support</option>
+            <option>Partnership / Investment</option>
+          </select>
+        </div>
+        <div class="cf-field"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us what you need..." required></textarea></div>
+        <button type="submit" class="btn-orange full-w">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+        <p>Innovating and Inspiring Communities worldwide through ethical technology.</p>
+      </div>
+      <div class="footer-col"><h4>Innovations</h4><a href="#" onclick="openModal('automation')">Room Automation</a><a href="#" onclick="openModal('bottle')">Thermo Bottle</a><a href="#" onclick="openModal('tax')">Tax Consultancy</a><a href="#" onclick="openModal('postpartum')">Postpartum Support</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#about">About</a><a href="#impact">Impact</a><a href="#contact">Contact</a><a href="login.html">Login</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FLYNQN. All rights reserved. Innovating and Inspiring Communities.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- AUTOMATION MODAL -->
+<div class="modal-overlay" id="modal-automation">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('automation')">✕</button>
+    <div class="modal-icon">🏠</div>
+    <div class="modal-tag">IoT · Hardware · Under ₹900</div>
+    <h2>Rural Room Automation</h2>
+    <p>FLYNQN's smart home kit is designed for rural India and similar markets — affordable IoT devices that automate lighting, fans, and basic security under ₹900 per room.</p>
+    <ul class="modal-features">
+      <li>✓ Full installation included</li>
+      <li>✓ Works on low-bandwidth networks</li>
+      <li>✓ Solar-compatible</li>
+      <li>✓ App + voice control</li>
+      <li>✓ 1-year warranty</li>
+    </ul>
+    <form class="modal-form" id="automationForm">
+      <h3>Request Product Information</h3>
+      <div class="mf-row">
+        <div class="mf-field"><label>Your Name</label><input type="text" name="name" placeholder="Full Name" required/></div>
+        <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="mf-field"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf-field"><label>Number of Rooms</label>
+        <select name="rooms"><option>1 Room</option><option>2 Rooms</option><option>3 Rooms</option><option>4+ Rooms</option></select>
+      </div>
+      <div class="mf-field"><label>Message</label><textarea name="message" rows="3" placeholder="Any specific requirements?"></textarea></div>
+      <button type="submit" class="btn-orange full-w">Send Inquiry</button>
+    </form>
+  </div>
+</div>
+
+<!-- BOTTLE MODAL -->
+<div class="modal-overlay" id="modal-bottle">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('bottle')">✕</button>
+    <div class="modal-icon">🌡️</div>
+    <div class="modal-tag">CleanTech · Patented · Green Energy</div>
+    <h2>Thermo-Electric Bottle</h2>
+    <p>Our patented thermo-electric bottle harvests energy from temperature differences — hot tea or cold water both generate micro-power for charging small devices off-grid.</p>
+    <ul class="modal-features">
+      <li>✓ Generates power from any liquid</li>
+      <li>✓ USB-A output for device charging</li>
+      <li>✓ Stainless steel food-grade body</li>
+      <li>✓ Zero emissions, zero fuel</li>
+      <li>✓ Ideal for field workers & hikers</li>
+    </ul>
+    <form class="modal-form" id="bottleForm">
+      <h3>Pre-Order / Wholesale Inquiry</h3>
+      <div class="mf-row">
+        <div class="mf-field"><label>Name</label><input type="text" name="name" placeholder="Full Name" required/></div>
+        <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="mf-field"><label>Inquiry Type</label>
+        <select name="type"><option>Personal Pre-Order</option><option>Bulk / Wholesale</option><option>Distributor Partnership</option><option>Research / Media</option></select>
+      </div>
+      <div class="mf-field"><label>Message</label><textarea name="message" rows="3" placeholder="Tell us more..."></textarea></div>
+      <button type="submit" class="btn-orange full-w">Submit Inquiry</button>
+    </form>
+  </div>
+</div>
+
+<!-- TAX MODAL -->
+<div class="modal-overlay" id="modal-tax">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('tax')">✕</button>
+    <div class="modal-icon">📑</div>
+    <div class="modal-tag">Finance · Legal · Global</div>
+    <h2>Nomadic Tax Consultancy</h2>
+    <p>Expert advisory for digital nomads, remote workers, and global professionals navigating complex multi-jurisdiction tax obligations. Book a certified consultant today.</p>
+    <ul class="modal-features">
+      <li>✓ 40+ jurisdictions covered</li>
+      <li>✓ Certified tax professionals</li>
+      <li>✓ Multi-country income strategies</li>
+      <li>✓ Video or phone consultation</li>
+      <li>✓ Follow-up support included</li>
+    </ul>
+    <form class="modal-form" id="taxForm">
+      <h3>Book a Tax Consultation</h3>
+      <div class="mf-row">
+        <div class="mf-field"><label>Full Name</label><input type="text" name="name" placeholder="John Doe" required/></div>
+        <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-field"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 555 0000"/></div>
+        <div class="mf-field"><label>Countries of Income</label><input type="text" name="countries" placeholder="e.g. India, UAE, UK"/></div>
+      </div>
+      <div class="mf-field"><label>Preferred Meeting Date & Time</label><input type="datetime-local" name="meeting_time" required/></div>
+      <div class="mf-field"><label>Meeting Type</label>
+        <select name="meeting_type"><option>Video Call (Google Meet)</option><option>Phone Call</option><option>WhatsApp Call</option></select>
+      </div>
+      <div class="mf-field"><label>What do you need help with?</label><textarea name="message" rows="3" placeholder="Describe your tax situation briefly..." required></textarea></div>
+      <button type="submit" class="btn-orange full-w" id="taxSubmitBtn">Book Meeting — We'll Confirm via Email</button>
+    </form>
+  </div>
+</div>
+
+<!-- POSTPARTUM MODAL -->
+<div class="modal-overlay" id="modal-postpartum">
+  <div class="modal-box modal-box--wide">
+    <button class="modal-close" onclick="closeModal('postpartum')">✕</button>
+    <div class="modal-icon">💜</div>
+    <div class="modal-tag">HealthTech · Certified Doctors · Women</div>
+    <h2>Postpartum Support</h2>
+    <p>Live and recorded sessions with certified doctors. Private, compassionate, professional care for new mothers and all women experiencing postpartum challenges.</p>
+
+    <!-- Side-by-side option selector -->
+    <div class="pp-options-grid">
+
+      <!-- Option A: Live Session -->
+      <div class="pp-option" id="ppLiveOption">
+        <div class="pp-option-header">
+          <div class="pp-option-badge live">🔴 LIVE</div>
+          <h3>Live 1-on-1 Session</h3>
+          <p>Private video consultation with a certified doctor at your chosen time.</p>
+        </div>
+        <ul class="pp-feature-list">
+          <li><span>✓</span> 45-min with certified OB/GYN or psychologist</li>
+          <li><span>✓</span> 100% private & confidential</li>
+          <li><span>✓</span> Choose your doctor type</li>
+          <li><span>✓</span> Follow-up notes sent to email</li>
+        </ul>
+        <button class="pp-select-btn" onclick="showPPForm('live')" id="ppLiveSelectBtn">Book Live Session →</button>
+      </div>
+
+      <!-- Option B: Recorded Sessions -->
+      <div class="pp-option" id="ppRecordedOption">
+        <div class="pp-option-header">
+          <div class="pp-option-badge recorded">🎬 RECORDED</div>
+          <h3>Recorded Library</h3>
+          <p>50+ expert sessions you can watch anytime, at your own pace.</p>
+        </div>
+        <ul class="pp-feature-list">
+          <li><span>✓</span> Physical recovery, mental health, breastfeeding</li>
+          <li><span>✓</span> Multiple languages available</li>
+          <li><span>✓</span> Watch anytime, anywhere</li>
+          <li><span>✓</span> New sessions added monthly</li>
+        </ul>
+        <button class="pp-select-btn" onclick="showPPForm('recorded')" id="ppRecordedSelectBtn">Access Recordings →</button>
+      </div>
+
+    </div>
+
+    <!-- LIVE BOOKING FORM (hidden by default) -->
+    <div class="pp-form-section" id="ppLiveForm" style="display:none;">
+      <div class="pp-form-back">
+        <button onclick="hidePPForms()" class="pp-back-btn">← Back to options</button>
+        <div class="pp-form-type-label">🔴 Booking Live Session</div>
+      </div>
+      <form class="modal-form" id="postpartumForm">
+        <div class="mf-row">
+          <div class="mf-field"><label>Your Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+          <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+        </div>
+        <div class="mf-row">
+          <div class="mf-field"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+91 98765 43210"/></div>
+          <div class="mf-field"><label>Weeks / Months Postpartum</label><input type="text" name="weeks" placeholder="e.g. 3 weeks, 2 months"/></div>
+        </div>
+        <div class="mf-field"><label>Preferred Date & Time</label><input type="datetime-local" name="meeting_time" required/></div>
+        <div class="mf-field"><label>Doctor Speciality</label>
+          <select name="doctor_type">
+            <option>OB/GYN — Physical Recovery</option>
+            <option>Psychologist — Mental Health & PPD</option>
+            <option>Lactation Consultant — Breastfeeding</option>
+            <option>No Preference — Assign Best Match</option>
+          </select>
+        </div>
+        <div class="mf-field"><label>What are you experiencing?</label>
+          <textarea name="message" rows="3" placeholder="Describe what you're going through — this is completely private and confidential." required></textarea>
+        </div>
+        <button type="submit" class="btn-orange full-w" id="postpartumSubmitBtn">Book My Session — Confirmation Sent to Email</button>
+        <p style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:0.6rem;">100% private. HIPAA & GDPR compliant. We confirm within 2 hours.</p>
+      </form>
+    </div>
+
+    <!-- RECORDED ACCESS FORM (hidden by default) -->
+    <div class="pp-form-section" id="ppRecordedForm" style="display:none;">
+      <div class="pp-form-back">
+        <button onclick="hidePPForms()" class="pp-back-btn">← Back to options</button>
+        <div class="pp-form-type-label">🎬 Access Recorded Sessions</div>
+      </div>
+      <form class="modal-form" id="recordedForm">
+        <div class="mf-row">
+          <div class="mf-field"><label>Your Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+          <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+        </div>
+        <div class="mf-field"><label>Topics You Need</label>
+          <select name="topic">
+            <option value="Physical Recovery">Physical Recovery</option>
+            <option value="Mental Health & PPD">Mental Health & PPD</option>
+            <option value="Breastfeeding & Nutrition">Breastfeeding & Nutrition</option>
+            <option value="Relationship & Support">Relationship & Support</option>
+            <option value="All Topics — Full Library">All Topics — Full Library Access</option>
+          </select>
+        </div>
+        <div class="mf-field"><label>Language Preference</label>
+          <select name="language">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Punjabi</option>
+            <option>Tamil</option>
+            <option>No preference</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-orange full-w">Get Access — Links Sent to Email</button>
+        <p style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:0.6rem;">Access links sent within 15 minutes of submission.</p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLOATING AI CHAT -->
+<div class="ai-float-btn" id="aiFloatBtn" title="Chat with FLYNQN AI">🤖</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-panel-header">
+    <div>
+      <div class="ai-panel-title">FLYNQN Assistant</div>
+      <div class="ai-panel-sub"><span class="online-dot"></span> Online</div>
+    </div>
+    <button class="ai-close-btn" id="aiPanelClose">✕</button>
+  </div>
+  <div class="ai-panel-messages" id="aiPanelMessages">
+    <div class="ai-msg bot"><div class="ai-bubble">👋 Hi! I'm FLYNQN's AI. Ask me about our innovations, tax help, or postpartum support!</div></div>
+  </div>
+  <div class="ai-suggestions">
+    <button class="ai-sug" onclick="sendAI('Tell me about room automation')">Room Automation</button>
+    <button class="ai-sug" onclick="sendAI('How does tax consultancy work?')">Tax Help</button>
+    <button class="ai-sug" onclick="sendAI('Tell me about postpartum support')">Postpartum</button>
+  </div>
+  <div class="ai-panel-input">
+    <input type="text" id="aiPanelInput" placeholder="Ask anything..."/>
+    <button id="aiPanelSend">↑</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sign Up – FLYNQN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#innovations">Innovations</a></li>
+      <li><a href="index.html#impact">Impact</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost-sm">Login</a>
+      <a href="signup.html" class="btn-orange">Sign Up</a>
+    </div>
+  </div>
+</nav>
+<div class="auth-page-wrapper">
+  <div class="auth-glass-card auth-glass-card--wide fade-up">
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="auth-brand">
+      <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+      <p>Create your free account</p>
+    </div>
+    <form id="signupForm">
+      <div class="auth-field-row">
+        <div class="auth-field"><label>Full Name</label><input type="text" name="name" placeholder="John Doe" required/></div>
+        <div class="auth-field"><label>Email Address</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="auth-field-row">
+        <div class="auth-field"><label>Password</label><input type="password" name="password" placeholder="Min. 8 characters" required minlength="8"/></div>
+        <div class="auth-field"><label>Confirm Password</label><input type="password" name="confirmPassword" placeholder="••••••••" required/></div>
+      </div>
+      <div class="auth-field"><label>I am joining as</label>
+        <select name="role" required><option value="">Select your role</option><option value="client">Client – I need services</option><option value="partner">Partner – I want to collaborate</option><option value="investor">Investor – I want to invest</option></select>
+      </div>
+      <label class="terms-check"><input type="checkbox" required/> I agree to FLYNQN's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      <button type="submit" class="btn-orange auth-submit">Create Free Account</button>
+    </form>
+    <p class="auth-switch">Already have an account? <a href="login.html">Login →</a></p>
+  </div>
+</div>
+<div class="ai-float-btn" id="aiFloatBtn">🤖</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-panel-header"><div><div class="ai-panel-title">FLYNQN Assistant</div><div class="ai-panel-sub"><span class="online-dot"></span>Online</div></div><button class="ai-close-btn" id="aiPanelClose">✕</button></div>
+  <div class="ai-panel-messages" id="aiPanelMessages"><div class="ai-msg bot"><div class="ai-bubble">👋 Need help creating your account?</div></div></div>
+  <div class="ai-panel-input"><input type="text" id="aiPanelInput" placeholder="Ask anything..."/><button id="aiPanelSend">↑</button></div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+</body>
+</html>

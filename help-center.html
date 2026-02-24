@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Help Center – FLYNQN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#innovations">Innovations</a></li>
+      <li><a href="index.html#impact">Impact</a></li>
+      <li><a href="help-center.html" class="active">Help Center</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost-sm">Login</a>
+      <a href="signup.html" class="btn-orange">Sign Up</a>
+    </div>
+  </div>
+</nav>
+
+<div class="help-hero">
+  <div class="help-hero-inner fade-up">
+    <span class="section-label">Support</span>
+    <h1>How can we <span class="orange">help you?</span></h1>
+    <p>Find answers or reach our team directly</p>
+    <div class="help-searchbar">
+      <span>🔍</span>
+      <input type="text" id="faqSearch" placeholder="Search questions..."/>
+    </div>
+  </div>
+</div>
+
+<div class="help-topics-bar">
+  <button class="topic-chip active" onclick="filterTopic('all',event)">All</button>
+  <button class="topic-chip" onclick="filterTopic('general',event)">General</button>
+  <button class="topic-chip" onclick="filterTopic('tax',event)">Tax Consultancy</button>
+  <button class="topic-chip" onclick="filterTopic('automation',event)">Automation</button>
+  <button class="topic-chip" onclick="filterTopic('healthcare',event)">Healthcare</button>
+  <button class="topic-chip" onclick="filterTopic('technical',event)">Technical</button>
+</div>
+
+<div class="help-faq">
+
+  <div class="faq-cat fade-up" data-topic="general">
+    <div class="faq-cat-header"><span>📋</span><h2>General Questions</h2></div>
+    <div class="faq-item"><div class="faq-q">What is FLYNQN? <span class="faq-arrow">▼</span></div><div class="faq-ans">FLYNQN is a global umbrella innovation and consulting group. Our portfolio includes rural room automation, thermo-electric clean energy, nomadic tax consultancy, and postpartum healthcare — all built to inspire and empower communities worldwide.</div></div>
+    <div class="faq-item"><div class="faq-q">Is FLYNQN free to use? <span class="faq-arrow">▼</span></div><div class="faq-ans">Creating an account is free. Individual services like tax consultations and postpartum sessions are priced per session. Room automation kits are available under ₹900. Contact us for detailed pricing.</div></div>
+    <div class="faq-item"><div class="faq-q">Where does FLYNQN operate? <span class="faq-arrow">▼</span></div><div class="faq-ans">FLYNQN operates in 120+ countries with regional experts and partners. Our digital services (tax consultancy and healthcare) are available globally via video call.</div></div>
+  </div>
+
+  <div class="faq-cat fade-up" data-topic="tax">
+    <div class="faq-cat-header"><span>💼</span><h2>Nomadic Tax Consultancy</h2></div>
+    <div class="faq-item"><div class="faq-q">What is Nomadic Tax Consultancy? <span class="faq-arrow">▼</span></div><div class="faq-ans">It's FLYNQN's specialist service for digital nomads and global professionals. We help you understand your tax residency, optimize cross-border obligations, and stay compliant across multiple jurisdictions simultaneously.</div></div>
+    <div class="faq-item"><div class="faq-q">How do I book a tax consultation? <span class="faq-arrow">▼</span></div><div class="faq-ans">Click the "Nomadic Tax Consultancy" card on the homepage. Fill in your details and preferred meeting time. Our team confirms within 2 business hours and sends a Google Meet link to both you and our consultant.</div></div>
+    <div class="faq-item"><div class="faq-q">Which countries do you cover? <span class="faq-arrow">▼</span></div><div class="faq-ans">We cover 40+ jurisdictions including India, UAE, UK, USA, EU, Singapore, and more. Our team specializes in multi-country income tax strategies for professionals earning in 2 or more countries.</div></div>
+  </div>
+
+  <div class="faq-cat fade-up" data-topic="automation">
+    <div class="faq-cat-header"><span>⚡</span><h2>Automation & Products</h2></div>
+    <div class="faq-item"><div class="faq-q">What is the Rural Room Automation kit? <span class="faq-arrow">▼</span></div><div class="faq-ans">An affordable IoT smart home kit priced under ₹900 per room that automates lighting, fans, and basic security. It works on low-bandwidth networks and is solar-compatible — designed specifically for rural and semi-urban households.</div></div>
+    <div class="faq-item"><div class="faq-q">What is the Thermo-Electric Bottle? <span class="faq-arrow">▼</span></div><div class="faq-ans">A patented FLYNQN device that generates micro-electricity from the temperature difference between a hot or cold liquid and the surrounding air. It charges small devices via USB — zero emissions, zero fuel, works anywhere.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does installation take? <span class="faq-arrow">▼</span></div><div class="faq-ans">Room automation installation takes 2-3 days depending on room count. Our certified technicians handle everything — wiring, app setup, and a complete walkthrough before they leave.</div></div>
+  </div>
+
+  <div class="faq-cat fade-up" data-topic="healthcare">
+    <div class="faq-cat-header"><span>🏥</span><h2>Postpartum Support</h2></div>
+    <div class="faq-item"><div class="faq-q">What does the Postpartum Support service offer? <span class="faq-arrow">▼</span></div><div class="faq-ans">We offer two modes: Live 1-on-1 video sessions with certified OB/GYNs, psychologists, or lactation consultants, and a library of 50+ recorded sessions covering physical recovery, mental health, breastfeeding, and nutrition.</div></div>
+    <div class="faq-item"><div class="faq-q">Is my session completely private? <span class="faq-arrow">▼</span></div><div class="faq-ans">Absolutely. All sessions are fully private and confidential. FLYNQN is HIPAA and GDPR compliant. We never share your health information with any third party without your explicit written consent.</div></div>
+    <div class="faq-item"><div class="faq-q">Can I access the service from outside India? <span class="faq-arrow">▼</span></div><div class="faq-ans">Yes. Our postpartum support is available globally. We have certified practitioners across multiple countries and time zones, and match you with a professional compliant with your local telehealth regulations.</div></div>
+  </div>
+
+  <div class="faq-cat fade-up" data-topic="technical">
+    <div class="faq-cat-header"><span>🔧</span><h2>Technical Issues</h2></div>
+    <div class="faq-item"><div class="faq-q">I can't log into my account. <span class="faq-arrow">▼</span></div><div class="faq-ans">Use the Forgot Password link on the login page. If you signed up with Google, use the "Sign in with Google" button. Still stuck? Email support@flynq.com with your registered email address.</div></div>
+    <div class="faq-item"><div class="faq-q">I didn't receive a meeting confirmation email. <span class="faq-arrow">▼</span></div><div class="faq-ans">Check your spam folder first. Confirmation emails are sent within 15 minutes of booking. If you still haven't received one after 30 minutes, contact satnamsinghama@gmail.com with your booking details.</div></div>
+    <div class="faq-item"><div class="faq-q">How do I reschedule or cancel a meeting? <span class="faq-arrow">▼</span></div><div class="faq-ans">Reply to your confirmation email to request a reschedule, or email satnamsinghama@gmail.com at least 24 hours before your scheduled time. Cancellations within 24 hours may not be eligible for a refund.</div></div>
+  </div>
+
+</div>
+
+<!-- CONTACT SUPPORT -->
+<div class="help-contact">
+  <div class="help-contact-box fade-up">
+    <div class="help-contact-info">
+      <span class="section-label">Still need help?</span>
+      <h3>Contact <span class="orange">Support</span></h3>
+      <p>Our team responds within 4 business hours.</p>
+      <div class="hci">📧 support@flynq.com</div>
+      <div class="hci">💬 Live chat available 9am–6pm UTC</div>
+      <div class="hci">⏱️ Avg. response under 2 hours</div>
+    </div>
+    <form id="helpContactForm">
+      <div class="mf-row">
+        <div class="mf-field"><label>Your Name</label><input type="text" name="name" placeholder="Full Name" required/></div>
+        <div class="mf-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="mf-field"><label>Topic</label>
+        <select name="service"><option value="">Select topic</option><option>General</option><option>Nomadic Tax Consultancy</option><option>Automation Products</option><option>Postpartum Support</option><option>Technical Issue</option><option>Billing</option></select>
+      </div>
+      <div class="mf-field"><label>Message</label><textarea name="message" rows="4" placeholder="Describe your issue..." required></textarea></div>
+      <button type="submit" class="btn-orange full-w">Submit Request</button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><a class="logo" href="index.html">FLYNQN<span class="logo-dot">.</span></a><p>Innovating and Inspiring Communities worldwide.</p></div>
+      <div class="footer-col"><h4>Innovations</h4><a href="index.html#innovations">Room Automation</a><a href="index.html#innovations">Thermo Bottle</a><a href="index.html#innovations">Tax Consultancy</a><a href="index.html#innovations">Postpartum Support</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="index.html#about">About</a><a href="index.html#impact">Impact</a><a href="index.html#contact">Contact</a><a href="login.html">Login</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 FLYNQN. All rights reserved. Innovating and Inspiring Communities.</p></div>
+  </div>
+</footer>
+
+<div class="ai-float-btn" id="aiFloatBtn">🤖</div>
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-panel-header"><div><div class="ai-panel-title">FLYNQN Assistant</div><div class="ai-panel-sub"><span class="online-dot"></span>Online</div></div><button class="ai-close-btn" id="aiPanelClose">✕</button></div>
+  <div class="ai-panel-messages" id="aiPanelMessages"><div class="ai-msg bot"><div class="ai-bubble">👋 Hi! I can help you find answers faster. What are you looking for?</div></div></div>
+  <div class="ai-suggestions">
+    <button class="ai-sug" onclick="sendAI('Tell me about tax consultancy')">Tax Help</button>
+    <button class="ai-sug" onclick="sendAI('Tell me about postpartum support')">Postpartum</button>
+    <button class="ai-sug" onclick="sendAI('Room automation price')">Automation</button>
+  </div>
+  <div class="ai-panel-input"><input type="text" id="aiPanelInput" placeholder="Ask anything..."/><button id="aiPanelSend">↑</button></div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+</body>
+</html>
