@@ -1,21 +1,30 @@
+const axios = require("axios");
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const nodemailer = require('nodemailer');
+
 
 const OWNER = process.env.OWNER_EMAIL || 'satnamsinghama@gmail.com';
 
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST || 'smtp-relay.brevo.com',
-    port: parseInt(process.env.EMAIL_PORT) || 587,
-    secure: false,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
+async function sendEmail(to, subject, html) {
+  await axios.post(
+    "https://api.brevo.com/v3/smtp/email",
+    {
+      sender: {
+        name: "FLYNQN",
+        email: "satnamsinghama@gmail.com"
+      },
+      to: [{ email: to }],
+      subject: subject,
+      htmlContent: html
     },
-    tls: { rejectUnauthorized: false }
-  });
+    {
+      headers: {
+        "api-key": process.env.BREVO_API_KEY,
+        "Content-Type": "application/json"
+      }
+    }
+  );
 }
 
 router.post('/', [
@@ -100,35 +109,25 @@ router.post('/', [
     <div style="background:#0e0e10;padding:0.85rem;text-align:center;color:rgba(255,255,255,0.18);font-size:0.7rem">© 2025 FLYNQN · Innovating and Inspiring Communities</div>
   </div>`;
 
-  try {
-    const mailer = getTransporter();
+try {
 
-    // Verify SMTP connection first
-    await mailer.verify();
+  await sendEmail(
+    OWNER,
+    `🗓️ New ${typeLabel} — ${d.name} | ${dateStr}`,
+    ownerHtml
+  );
 
-    // Send to owner
-    await mailer.sendMail({
-      from: `"FLYNQN" <${process.env.EMAIL_USER}>`,
-      to: OWNER,
-      replyTo: d.email,
-      subject: `🗓️ New ${typeLabel} — ${d.name} | ${dateStr}`,
-      html: ownerHtml
-    });
+  await sendEmail(
+    d.email,
+    `✅ FLYNQN: Your ${typeLabel} is confirmed`,
+    clientHtml
+  );
 
-    // Send confirmation to client
-    await mailer.sendMail({
-      from: `"FLYNQN" <${process.env.EMAIL_USER}>`,
-      to: d.email,
-      subject: `✅ FLYNQN: Your ${typeLabel} is confirmed`,
-      html: clientHtml
-    });
+  res.json({ message: 'Booking confirmed! Check your email.' });
 
-    res.json({ message: 'Booking confirmed! Check your email.' });
-
-  } catch (err) {
-  console.error("FULL MEETING ERROR:", err);
-  res.status(500).json({ message: "Meeting booking failed" });
+} catch (err) {
+  console.error('❌ Meeting email error:', err.response?.data || err.message);
+  res.status(500).json({ message: 'Email sending failed.' });
 }
-});
 
 module.exports = router;
