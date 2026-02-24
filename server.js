@@ -9,7 +9,7 @@ const passport = require('passport');
 const path = require('path');
 
 const app = express();
-
+app.set('trust proxy', 1);
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: '*', credentials: true }));
 app.use(morgan('dev'));
