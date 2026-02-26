@@ -487,6 +487,6 @@ submitForm(
   '/api/auth/signup',
   'Account created successfully!'
 );
-document.addEventListener("DOMContentLoaded", function () {
+
 
  
