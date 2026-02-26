@@ -487,11 +487,15 @@ submitForm(
   '/api/auth/signup',
   'Account created successfully!'
 );
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (hamburger) {
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-}
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+});
