@@ -285,7 +285,7 @@ a { text-decoration: none; }
 .hci { display: flex; align-items: center; gap: 0.65rem; font-size: 0.88rem; color: var(--muted); margin-bottom: 0.6rem; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .innovations-grid { grid-template-columns: 1fr 1fr; }
   .impact-grid { grid-template-columns: 1fr 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
