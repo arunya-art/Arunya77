@@ -307,6 +307,27 @@ a { text-decoration: none; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .ai-chat-panel { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
   .ai-float-btn { bottom: 1.5rem; right: 1.5rem; }
+  .nav-cta {
+    display: flex !important;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav-login {
+    display: inline-block !important;
+  }
+
+  /* Fix page not scaling: */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container, section, header {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
 }
 @media (max-width: 480px) {
   .impact-grid { grid-template-columns: 1fr 1fr; }
