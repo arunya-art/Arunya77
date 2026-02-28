@@ -40,8 +40,8 @@ a { text-decoration: none; }
 .btn-outline-white { display: inline-flex; align-items: center; color: var(--white); padding: 0.85rem 2rem; border-radius: 50px; font-family: var(--font); font-weight: 700; font-size: 1rem; border: 1.5px solid rgba(255,255,255,0.25); transition: var(--transition); }
 .btn-outline-white:hover { border-color: var(--orange); color: var(--orange); }
 .btn-outline-white.large { padding: 1.1rem 2.5rem; font-size: 1.1rem; }
-.btn-ghost-sm { display: inline-block; color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 600; font-family: var(--font); padding: 0.5rem 1rem; border-radius: 8px; transition: var(--transition); }
-.btn-ghost-sm:hover { color: var(--orange); }
+.btn-ghost-sm { display: inline-block; color: #fff; font-size: 0.9rem; font-weight: 600; font-family: var(--font); padding: 0.5rem 1.25rem; border-radius: 50px; background: var(--orange); transition: var(--transition); }
+.btn-ghost-sm:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204,85,0,0.4); }
 
 /* ===== NAVBAR ===== */
 .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.25rem 2rem; transition: all 0.4s ease; }
